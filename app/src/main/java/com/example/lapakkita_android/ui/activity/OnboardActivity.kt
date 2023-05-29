@@ -21,8 +21,7 @@ class OnboardActivity : AppCompatActivity() {
                     val intent = Intent(this@OnboardActivity, LoginActivity::class.java)
                     startActivity(intent)
                 },
-                text = resources.getString(R.string.login),
-                isEnabled = true
+                text = resources.getString(R.string.login)
             )
         }
 
@@ -33,7 +32,6 @@ class OnboardActivity : AppCompatActivity() {
                     startActivity(intent)
                 },
                 text = resources.getString(R.string.register),
-                isEnabled = true
             )
         }
     }

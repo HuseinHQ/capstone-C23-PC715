@@ -1,8 +1,8 @@
 package com.example.lapakkita_android.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.example.lapakkita_android.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.lapakkita_android.databinding.ActivityRegisterBinding
 import com.example.lapakkita_android.ui.components.RegisterForm
 
@@ -14,7 +14,17 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.registerForm.setContent {
-            RegisterForm()
+            RegisterForm(
+                loginIntent = {
+                    val intent = Intent(
+                        this@RegisterActivity,
+                        LoginActivity::class.java
+                    )
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish()
+                }
+            )
         }
     }
 }

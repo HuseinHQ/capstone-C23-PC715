@@ -23,13 +23,11 @@ fun ButtonPrimary(
     modifier: Modifier = Modifier,
     onClicked : () -> Unit,
     text: String,
-    isEnabled: Boolean
 ){
     Button(
         onClick = { onClicked() },
         modifier = modifier
             .fillMaxWidth(),
-        enabled = isEnabled,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = colorResource(R.color.green_500),
             contentColor = Color.White,
@@ -50,13 +48,11 @@ fun ButtonSecondary(
     modifier: Modifier = Modifier,
     onClicked : () -> Unit,
     text: String,
-    isEnabled: Boolean
 ){
     Button(
         onClick = { onClicked() },
         modifier = modifier
             .fillMaxWidth(),
-        enabled = isEnabled,
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Color(0XFFD5ECD7),
             contentColor = Color(0XFF4EB156)
@@ -78,6 +74,5 @@ fun SimpleComposablePreview() {
     ButtonSecondary(
         onClicked = {},
         text = stringResource(R.string.register),
-        isEnabled = true
     )
 }

@@ -7,9 +7,19 @@
     <string name="user">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="back">Back</string>
     <string name="pass_visible_on">Toggle password to visible on</string>
     <string name="pass_visible_off">Toggle password to visible off</string>
     <string name="google_login">Sign in with Google</string>
     <string name="delete_all">Delete All</string>
+    <string name="error_user">Please fill your username</string>
+    <string name="error_email">Your email is not valid</string>
+    <string name="error_password">Password must contain more than 8 characters</string>
+    <string name="error_confirm_password">Password is not matched</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_explore">Explore</string>
+    <string name="menu_profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

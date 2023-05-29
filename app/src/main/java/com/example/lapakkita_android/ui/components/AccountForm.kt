@@ -61,7 +61,10 @@ fun EmailForm(
         trailingIcon = {
             if (text != TextFieldValue("")){
                 IconButton(
-                    onClick = { text = TextFieldValue("") },
+                    onClick = {
+                        text = TextFieldValue("")
+                        emailTextValidate(false)
+                    },
                     modifier = Modifier.padding(horizontal = 4.dp)
                 ) {
                     Icon(
@@ -78,6 +81,9 @@ fun EmailForm(
 @Composable
 fun PasswordForm(
     passTextValidate: (Boolean) -> Unit,
+    passText: (String) -> Unit,
+    rePassTextValidate: (Boolean) -> Unit,
+    rePassText: String,
     modifier: Modifier = Modifier,
 ){
     var text by remember { mutableStateOf(TextFieldValue()) }
@@ -97,7 +103,8 @@ fun PasswordForm(
             text = newValue
             filledPass = newValue.toString() != ""
             passTextValidate(newValue.text.length >= 8)
-
+            passText(newValue.text)
+            rePassTextValidate(rePassText==newValue.text)
         },
         shape = RoundedCornerShape(32.dp),
         placeholder = { Text(text = stringResource(id = R.string.password)) },
@@ -133,9 +140,71 @@ fun PasswordForm(
         visualTransformation = if(passVisible)VisualTransformation.None else PasswordVisualTransformation()
     )
 }
+@Composable
+fun RePasswordForm(
+    rePassTextValidate: (Boolean) -> Unit,
+    confirmPass: (String) -> Unit,
+    passText: String,
+    modifier: Modifier = Modifier,
+){
+    var text by remember { mutableStateOf(TextFieldValue()) }
+    var passVisible by remember { mutableStateOf(false) }
+    var filledPass by remember { mutableStateOf(false) }
+    OutlinedTextField(
+        modifier = modifier
+            .fillMaxWidth(),
+        leadingIcon = {
+            Icon(
+                    imageVector = Icons.Default.Lock,
+                contentDescription = stringResource(R.string.confirm_password)
+            )
+        },
+        value = text,
+        onValueChange = { newValue ->
+            text = newValue
+            filledPass = newValue.toString() != ""
+            rePassTextValidate(passText==newValue.text)
+            confirmPass(newValue.text)
+
+        },
+        shape = RoundedCornerShape(32.dp),
+        placeholder = { Text(text = stringResource(id = R.string.confirm_password)) },
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = Color(0xFFEFEFEF),
+            disabledIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = colorResource(R.color.green_500),
+            unfocusedIndicatorColor = Color.Transparent,
+            placeholderColor = Color(0xFF707070),
+            textColor = Color.Black,
+            cursorColor = Color.Black
+        ),
+        keyboardOptions = KeyboardOptions(
+            imeAction = ImeAction.Done,
+            keyboardType = KeyboardType.Password,
+        ),
+        trailingIcon = {
+            if(filledPass) {
+                IconButton(
+                    onClick = { passVisible = !passVisible },
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                ) {
+                    Icon(
+                        painter = if (passVisible) painterResource(R.drawable.baseline_visibility_off_24)
+                        else painterResource(R.drawable.visibility_24),
+                        contentDescription = if (passVisible) stringResource(R.string.pass_visible_off)
+                        else stringResource(R.string.pass_visible_on),
+                        tint = Color(0xFF707070)
+                    )
+                }
+            }
+        },
+        visualTransformation = if(passVisible)VisualTransformation.None else PasswordVisualTransformation()
+    )
+}
 
 @Composable
 fun UsernameForm(
+    userTextValidate: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ){
     var text by remember { mutableStateOf(TextFieldValue()) }
@@ -151,6 +220,7 @@ fun UsernameForm(
         value = text,
         onValueChange = { newValue ->
             text = newValue
+            userTextValidate(newValue.text.isNotEmpty())
         },
         shape = RoundedCornerShape(32.dp),
         placeholder = { Text(text = stringResource(id = R.string.user)) },
@@ -171,7 +241,10 @@ fun UsernameForm(
         trailingIcon = {
             if (text != TextFieldValue("")){
                 IconButton(
-                    onClick = { text = TextFieldValue("") },
+                    onClick = {
+                        text = TextFieldValue("")
+                        userTextValidate(false)
+                    },
                     modifier = Modifier.padding(horizontal = 4.dp)
                 ) {
                     Icon(
