@@ -12,8 +12,19 @@
         android:theme="@style/Theme.LapakKitaAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ui.activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.LapakKitaAndroid.NoActionBar" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.OnboardActivity"
+            android:exported="true"
+            android:theme="@style/Theme.LapakKitaAndroid.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

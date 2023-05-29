@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">LapakKita-Android</string>
+    <string name="app_name">LapakKita</string>
+    <string name="title_activity_onboard">OnboardActivity</string>
+    <string name="lorem">Lorem ipsum dolor sit amet</string>
+    <string name="login">Login</string>
+    <string name="register">Sign Up</string>
+    <string name="user">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="back">Back</string>
+    <string name="pass_visible_on">Toggle password to visible on</string>
+    <string name="pass_visible_off">Toggle password to visible off</string>
+    <string name="google_login">Sign in with Google</string>
+    <string name="delete_all">Delete All</string>
 </resources>
