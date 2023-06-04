@@ -1,65 +1,123 @@
 package com.example.lapakkita_android.ui.fragment
 
+import android.animation.ObjectAnimator
+import android.content.Intent
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.lapakkita_android.R
+import com.example.lapakkita_android.databinding.FragmentHomeBinding
+import com.example.lapakkita_android.ui.activity.DetailActivity
+import com.example.lapakkita_android.ui.activity.LoginActivity
+import com.example.lapakkita_android.ui.components.BackButton
+import com.example.lapakkita_android.ui.components.CloseButton
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
-class HomeFragment : Fragment() {
-
-    private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        val sydney = LatLng(
-            -34.0,
-            151.0
-        )
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }
+class HomeFragment : Fragment(), OnMapReadyCallback {
+    private var _binding : FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private var isShowDetail = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(false)
+        (activity as AppCompatActivity).supportActionBar?.hide()
     }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(
-            R.layout.fragment_home,
-            container,
-            false
-        )
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        setupMap()
+        setupButton()
+        return binding.root
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
-        super.onViewCreated(
-            view,
-            savedInstanceState
-        )
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+    private fun setupButton() {
+        binding.btnClose.setContent {
+            CloseButton(
+                onClick = {
+                    hideCardView()
+                }
+            )
+        }
     }
+
+    private fun setupMap() {
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        mapFragment?.getMapAsync(this)
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        map.setInfoWindowAdapter(null)
+        val sydney = LatLng(
+            -34.0,
+            151.0
+        )
+        val marker = map.addMarker(MarkerOptions()
+            .position(sydney)
+            .title("Marker in Sydney")
+        )
+        marker?.tag = "OK"
+
+        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        map.setOnMapClickListener {
+            if(isShowDetail) {
+                hideCardView()
+            }
+        }
+        map.setOnMarkerClickListener {
+            it.hideInfoWindow()
+            showCardView(it)
+            false
+        }
+    }
+
+    private fun showCardView(marker: Marker) {
+        if(!isShowDetail) {
+            isShowDetail = !isShowDetail
+            ObjectAnimator.ofFloat(
+                binding.mapDetail,
+                View.TRANSLATION_Y,
+                480f,
+                -480f
+            )
+                .setDuration(500)
+                .start()
+            binding.detailName.text = marker.title
+            binding.mapDetail.setOnClickListener {
+                startActivity(
+                    Intent(
+                        context,
+                        DetailActivity::class.java
+                    )
+                )
+            }
+        }
+    }
+    private fun hideCardView(){
+        isShowDetail = !isShowDetail
+        ObjectAnimator.ofFloat(
+            binding.mapDetail,
+            View.TRANSLATION_Y,
+            -480f,
+            480f
+        )
+            .setDuration(500)
+            .start()
+    }
+
 }

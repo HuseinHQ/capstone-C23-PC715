@@ -26,8 +26,17 @@
     <style name="TextContent.Subtitle">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/inter_medium</item>
-    </style><style name="TextContent.Header">
+    </style>
+    <style name="TextContent.Header">
         <item name="android:textSize">32sp</item>
+    <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="TextContent.SubHeader">
+        <item name="android:textSize">24sp</item>
+    <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="TextContent.SubHeader2">
+        <item name="android:textSize">16sp</item>
     <item name="android:fontFamily">@font/inter_bold</item>
     </style>
 </resources>

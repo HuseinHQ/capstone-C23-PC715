@@ -2,6 +2,10 @@
     <string name="app_name">LapakKita</string>
     <string name="title_activity_onboard">OnboardActivity</string>
     <string name="lorem">Lorem ipsum dolor sit amet</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non elit sed lacus pretium viverra. Nulla in efficitur lectus. Ut luctus finibus metus, sit amet sollicitudin magna consequat ac. Praesent justo elit, feugiat sed blandit eu, pretium vitae nunc. Nunc dictum arcu urna, nec pulvinar nibh semper luctus. Proin vehicula orci volutpat enim vestibulum, vestibulum suscipit ligula luctus. Nulla at ultricies turpis. Donec vel sollicitudin tortor, tincidunt convallis ex. Ut condimentum felis ac suscipit sodales. Vivamus id nisl in lacus ultrices hendrerit. Nulla sodales nulla sed tristique semper. Nulla tincidunt fringilla felis. Fusce dignissim eleifend massa id tincidunt. Proin ut libero quis tortor maximus semper.
+        Mauris eget finibus turpis. Nulla vel lorem in dolor aliquam volutpat. Pellentesque non lorem eget elit tempor hendrerit nec aliquam lectus. Morbi consequat lacinia massa vel elementum. Donec volutpat ex et massa pellentesque consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sit amet augue a velit imperdiet hendrerit. Donec eu efficitur magna, ac pretium lectus. Sed aliquam nibh ac mauris condimentum, sed sagittis mauris lobortis. Donec eros nulla, imperdiet in ornare fringilla, vestibulum mattis nibh.
+        Aenean purus tellus, cursus at ipsum ultrices, efficitur volutpat lectus. Etiam vehicula velit ligula, sit amet eleifend lorem facilisis vitae. Maecenas finibus interdum justo non commodo. Integer massa arcu, molestie ac orci quis, accumsan aliquam sapien. Morbi ut congue lacus. Aliquam vel elementum massa, non varius mauris. Vestibulum tristique nisi est, posuere cursus lectus imperdiet vel. Sed ullamcorper posuere tellus, et faucibus ante maximus ut. Phasellus tincidunt neque risus. Praesent dignissim urna vestibulum augue aliquet pretium. Morbi mattis condimentum massa, a suscipit nunc tincidunt sit amet. Phasellus dignissim tellus eu lacus malesuada semper. Donec ornare bibendum turpis vitae ornare.
+    </string>
     <string name="login">Login</string>
     <string name="register">Sign Up</string>
     <string name="user">Username</string>
@@ -20,6 +24,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_explore">Explore</string>
     <string name="menu_profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close">Close</string>
+    <string name="image_place">Image Place</string>
+    <string name="rating">Rating</string>
+    <string name="find_location">Find Location</string>
 </resources>

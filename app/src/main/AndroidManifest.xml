@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LapakKitaAndroid"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.activity.DetailActivity"
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:theme="@style/Theme.LapakKitaAndroid.NoActionBar"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -37,17 +41,16 @@
             android:theme="@style/Theme.LapakKitaAndroid.NoActionBar" />
         <activity
             android:name=".ui.activity.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.OnboardActivity"
-            android:exported="true"
-            android:theme="@style/Theme.LapakKitaAndroid.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity.OnboardActivity"
+            android:exported="false"
+            android:theme="@style/Theme.LapakKitaAndroid.NoActionBar" />
     </application>
 
 </manifest>

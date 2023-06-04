@@ -1,8 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.HomeFragment" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.HomeFragment">
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/map_detail"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginBottom="-200dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingHorizontal="8dp"
+        android:paddingTop="8dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.4" />
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:id="@+id/detail_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/image_place"
+                android:scaleType="centerCrop"
+                android:src="@drawable/onboard_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/detail_name" />
+            <TextView
+                android:id="@+id/detail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/btn_close"
+                app:layout_constraintBottom_toBottomOf="@id/btn_close"
+                app:layout_constraintStart_toEndOf="@id/detail_image"
+                android:text="Lapak Name"
+                android:layout_marginStart="16dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                style="@style/TextContent.Subtitle"/>
+            <ImageView
+                android:id="@+id/icon_rating"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="@string/rating"
+                android:src="@drawable/baseline_star_border_24"
+                app:layout_constraintBottom_toBottomOf="@+id/detail_rating"
+                app:layout_constraintStart_toStartOf="@id/detail_name"
+                app:layout_constraintTop_toBottomOf="@id/detail_name" />
+            <TextView
+                android:id="@+id/detail_rating"
+                style="@style/TextContent.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/icon_rating"
+                app:layout_constraintTop_toBottomOf="@id/detail_name"
+                android:layout_marginStart="8dp"
+                android:text="Rating" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/detail_name"
+                app:layout_constraintTop_toBottomOf="@id/detail_rating"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="11sp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="?attr/colorOnSecondary"
+                android:textStyle="normal"
+                android:maxLines="5"
+                android:ellipsize="end"
+                android:text="@tools:sample/lorem/random"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

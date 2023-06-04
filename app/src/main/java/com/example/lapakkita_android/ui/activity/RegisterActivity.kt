@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lapakkita_android.databinding.ActivityRegisterBinding
+import com.example.lapakkita_android.ui.components.BackButton
 import com.example.lapakkita_android.ui.components.RegisterForm
 
 class RegisterActivity : AppCompatActivity() {
@@ -24,6 +25,11 @@ class RegisterActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+            )
+        }
+        binding.backBtn.setContent {
+            BackButton(
+                onClick = {finish()}
             )
         }
     }
