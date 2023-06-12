@@ -2,16 +2,19 @@
     <!-- Base application theme. -->
     <style name="Theme.LapakKitaAndroid" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_500</item>
-        <item name="colorPrimaryVariant">@color/green_200</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/secondary</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_500</item>
-        <item name="colorSecondaryVariant">@color/green_200</item>
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorSecondaryVariant">@color/secondary</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/green_700</item>
+        <item name="android:statusBarColor">@color/primary_variant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
     </style>
     <style name="Theme.LapakKitaAndroid.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -26,6 +29,14 @@
     <style name="TextContent.Subtitle">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+    <style name="TextContent.Subtitle.Variant">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+    <style name="TextContent.Subtitle2">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/inter_regular</item>
     </style>
     <style name="TextContent.Header">
         <item name="android:textSize">32sp</item>

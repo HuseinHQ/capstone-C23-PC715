@@ -34,16 +34,10 @@
             android:text="@string/lorem"
             style="@style/TextContent.Subtitle"/>
         <androidx.compose.ui.platform.ComposeView
-            android:id="@+id/login_btn"
+            android:id="@+id/compose_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:layout_marginTop="28dp"/>
-        <androidx.compose.ui.platform.ComposeView
-            android:id="@+id/register_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:layout_marginTop="12dp"/>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

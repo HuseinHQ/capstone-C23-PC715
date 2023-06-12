@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="green_200">#D5ECD7</color>
-    <color name="green_500">#4EB156</color>
-    <color name="green_700">#306A34</color>
+    <color name="primary">#4EB156</color>
+    <color name="primary_variant">#306A34</color>
+    <color name="secondary">#D5ECD7</color>
     <color name="black">#FF000000</color>
+    <color name="black_600">#99000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

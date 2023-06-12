@@ -22,7 +22,6 @@ fun DetailPhoto(
         contentDescription = null,
         modifier = modifier
             .height(380.dp)
-            .shadow(8.dp)
             .clip(
                 RoundedCornerShape(
                     bottomEnd = 20.dp,

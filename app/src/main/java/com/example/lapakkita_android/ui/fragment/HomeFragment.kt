@@ -15,6 +15,7 @@ import com.example.lapakkita_android.ui.activity.DetailActivity
 import com.example.lapakkita_android.ui.activity.LoginActivity
 import com.example.lapakkita_android.ui.components.BackButton
 import com.example.lapakkita_android.ui.components.CloseButton
+import com.example.lapakkita_android.ui.components.HomeTopBar
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -30,11 +31,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
     private var isShowDetail = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(false)
-        (activity as AppCompatActivity).supportActionBar?.hide()
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,17 +38,21 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         setupMap()
-        setupButton()
+        setupComponent()
         return binding.root
     }
 
-    private fun setupButton() {
+    private fun setupComponent() {
         binding.btnClose.setContent {
             CloseButton(
                 onClick = {
                     hideCardView()
                 }
             )
+        }
+
+        binding.homeTopBar.setContent {
+            HomeTopBar()
         }
     }
 
@@ -84,6 +84,9 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             showCardView(it)
             false
         }
+        map.uiSettings.isZoomGesturesEnabled = true
+        map.uiSettings.isCompassEnabled = true
+
     }
 
     private fun showCardView(marker: Marker) {

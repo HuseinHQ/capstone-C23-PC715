@@ -13,8 +13,8 @@ import com.example.lapakkita_android.R
 
 @Composable
 fun BackButton(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
 ){
     IconButton(
         onClick = {onClick()},

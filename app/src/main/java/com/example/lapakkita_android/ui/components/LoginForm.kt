@@ -6,14 +6,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lapakkita_android.R
 
 @Composable
 fun LoginForm(
-    mainIntent: () -> Unit,
+    signIn: (String, String) -> Unit,
+    googleSignIn: () -> Unit,
     modifier: Modifier = Modifier,
 ){
     var isErrorLogin by remember { mutableStateOf(false) }
@@ -21,12 +21,18 @@ fun LoginForm(
 
     var validPass by remember { mutableStateOf(false) }
     var validEmail by remember { mutableStateOf(false) }
+
+    var email by remember{ mutableStateOf("") }
+    var pass by remember { mutableStateOf("") }
     Column(modifier = modifier
         .fillMaxWidth()) {
         EmailForm(
             emailTextValidate = {
                 validEmail = it
                 if(isClickedButton) isErrorLogin = !(validEmail  && validPass)
+            },
+            emailText = {
+                email = it
             }
         )
         Spacer(modifier = modifier.height(16.dp))
@@ -35,9 +41,11 @@ fun LoginForm(
                 validPass = it
                 if(isClickedButton) isErrorLogin = !(validEmail  && validPass)
             },
-            passText = {},
+            passText = {
+                pass = it
+            },
             rePassTextValidate = {},
-            rePassText = ""
+            rePassText = "",
         )
         Spacer(modifier = modifier.height(16.dp))
         if(isErrorLogin) {
@@ -57,14 +65,15 @@ fun LoginForm(
             onClicked = {
                 isErrorLogin = !(validEmail  && validPass)
                 isClickedButton = true
-                if(!isErrorLogin) mainIntent()
+                if(!isErrorLogin) signIn(email, pass)
             },
             text = stringResource(R.string.login),
         )
         Spacer(modifier = modifier.height(24.dp))
         ButtonSecondary(
-            onClicked = {},
+            onClicked = {googleSignIn()},
             text = stringResource(R.string.google_login)
         )
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }

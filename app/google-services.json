@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "937218799930",
+    "project_id": "lapakkita-7928f",
+    "storage_bucket": "lapakkita-7928f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937218799930:android:b9b667364168aed4977803",
+        "android_client_info": {
+          "package_name": "com.example.lapakkita_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937218799930-uevmq9ppmqka6jgtp8vp7hjvqc515tds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOpUoPG-8I6s5u1rmDtipNq3o0az7tN9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937218799930-cnmveif0qonpvccu0pvit2d3ta2ne7du.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

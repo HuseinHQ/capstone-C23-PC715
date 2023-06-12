@@ -8,6 +8,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.example.lapakkita_android.R
 
@@ -27,17 +29,20 @@ fun ButtonPrimary(
     Button(
         onClick = { onClicked() },
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = colorResource(R.color.green_500),
+            backgroundColor = colorResource(R.color.primary),
             contentColor = Color.White,
         ),
+        elevation = ButtonDefaults.elevation(0.dp),
         shape = RoundedCornerShape(50),
     ) {
         Text(
             text = text,
             fontSize = 14.sp,
-            fontFamily = FontFamily(Font(R.font.inter_medium)),
+            fontFamily = FontFamily(Font(R.font.inter_bold)),
+            letterSpacing = 0.em,
             modifier = Modifier.padding(vertical = 8.dp)
         )
     }
@@ -52,10 +57,11 @@ fun ButtonSecondary(
     Button(
         onClick = { onClicked() },
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color(0XFFD5ECD7),
-            contentColor = Color(0XFF4EB156)
+            backgroundColor = colorResource(R.color.secondary),
+            contentColor = colorResource(R.color.primary)
         ),
         elevation = ButtonDefaults.elevation(0.dp),
         shape = RoundedCornerShape(50),
@@ -64,6 +70,7 @@ fun ButtonSecondary(
             text = text,
             fontSize = 14.sp,
             fontFamily = FontFamily(Font(R.font.inter_medium)),
+            letterSpacing = 0.em,
             modifier = Modifier.padding(vertical = 8.dp)
         )
     }

@@ -14,7 +14,6 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.*
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -25,6 +24,7 @@ import com.example.lapakkita_android.R
 @Composable
 fun EmailForm(
     emailTextValidate: (Boolean) -> Unit,
+    emailText: (String) -> Unit,
     modifier: Modifier = Modifier,
 ){
     var text by remember { mutableStateOf(TextFieldValue()) }
@@ -41,13 +41,14 @@ fun EmailForm(
         onValueChange = { newValue ->
             text = newValue
             emailTextValidate(android.util.Patterns.EMAIL_ADDRESS.matcher(newValue.text).matches())
+            emailText(newValue.text)
         },
         shape = RoundedCornerShape(32.dp),
         placeholder = { Text(text = stringResource(id = R.string.email)) },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color(0xFFEFEFEF),
             disabledIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = colorResource(R.color.green_500),
+            focusedIndicatorColor = colorResource(R.color.primary),
             unfocusedIndicatorColor = Color.Transparent,
             placeholderColor = Color(0xFF707070),
             textColor = Color.Black,
@@ -111,7 +112,7 @@ fun PasswordForm(
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color(0xFFEFEFEF),
             disabledIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = colorResource(R.color.green_500),
+            focusedIndicatorColor = colorResource(R.color.primary),
             unfocusedIndicatorColor = Color.Transparent,
             placeholderColor = Color(0xFF707070),
             textColor = Color.Black,
@@ -172,7 +173,7 @@ fun RePasswordForm(
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color(0xFFEFEFEF),
             disabledIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = colorResource(R.color.green_500),
+            focusedIndicatorColor = colorResource(R.color.primary),
             unfocusedIndicatorColor = Color.Transparent,
             placeholderColor = Color(0xFF707070),
             textColor = Color.Black,
@@ -227,7 +228,7 @@ fun UsernameForm(
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color(0xFFEFEFEF),
             disabledIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = colorResource(R.color.green_500),
+            focusedIndicatorColor = colorResource(R.color.primary),
             unfocusedIndicatorColor = Color.Transparent,
             placeholderColor = Color(0xFF707070),
             textColor = Color.Black,

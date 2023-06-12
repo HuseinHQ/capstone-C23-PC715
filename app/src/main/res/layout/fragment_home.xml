@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.HomeFragment">
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/home_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    <androidx.cardview.widget.CardView
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/home_top_bar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/map_detail"
-        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:cardCornerRadius="20dp"
         android:layout_marginBottom="-200dp"
-        android:layout_marginHorizontal="20dp"
-        android:paddingHorizontal="8dp"
-        android:paddingTop="8dp">
+        android:layout_marginHorizontal="20dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp">
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp">
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
                 android:layout_width="0dp"
@@ -43,6 +52,7 @@
                 android:contentDescription="@string/image_place"
                 android:scaleType="centerCrop"
                 android:src="@drawable/onboard_bg"
+                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +66,7 @@
                 app:layout_constraintStart_toEndOf="@id/detail_image"
                 android:text="Lapak Name"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 style="@style/TextContent.Subtitle"/>
@@ -92,5 +103,5 @@
                 android:ellipsize="end"
                 android:text="@tools:sample/lorem/random"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

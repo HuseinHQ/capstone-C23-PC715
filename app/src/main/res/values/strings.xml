@@ -16,6 +16,7 @@
     <string name="pass_visible_on">Toggle password to visible on</string>
     <string name="pass_visible_off">Toggle password to visible off</string>
     <string name="google_login">Sign in with Google</string>
+    <string name="delete">Delete</string>
     <string name="delete_all">Delete All</string>
     <string name="error_user">Please fill your username</string>
     <string name="error_email">Your email is not valid</string>
@@ -29,4 +30,47 @@
     <string name="image_place">Image Place</string>
     <string name="rating">Rating</string>
     <string name="find_location">Find Location</string>
+    <string name="title_activity_find_route">FindRouteActivity</string>
+    <string name="review">Review</string>
+    <string name="add_review">Add Review</string>
+    <string name="find_review">Find review</string>
+    <string name="send_review">Send review</string>
+    <string name="title_activity_review">ReviewActivity</string>
+    <string name="user_photo">User Photo</string>
+    <string name="give_rate">What\'s your rate?</string>
+    <string name="give_comment">Your comment</string>
+    <string name="comment_empty">Please fill up your comment</string>
+    <string name="rating_empty">Please give your rate</string>
+    <string name="search_bar">Search bar…</string>
+    <string name="search_store">Search store</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="find_recommendation">Find recommendation</string>
+    <string name="custom_search">Custom search</string>
+    <string name="search">Search</string>
+    <string name="select_category">Select Category</string>
+    <string name="add_bookmark">Add to bookmark</string>
+    <string name="added_bookmark">Added to bookmark</string>
+    <string name="remove_bookmark">Remove from bookmark</string>
+    <string name="removed_bookmark">Removed from bookmark</string>
+    <string name="share_content">
+        Find nearby store with LapakKita\n %s\n
+        https://www.google.com/maps/search/?api=1&amp;query=%f,%f
+    </string>
+    <string name="share_via">Share via…</string>
+    <string name="selected_category">Selected category: %s</string>
+    <string name="logout">Logout</string>
+    <string name="change_profile_photo">Change profile photo</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="profile_photo">Profile photo</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="not_granted_camera">Camera is not granted</string>
+    <string name="take_image_from">Take image from…</string>
+    <string name="connection_error">Network problem.\nPlease check your connection</string>
+    <string name="sign_up_success">Sign up successful</string>
+    <string name="sign_up_failed">Sign up failed</string>
+    <string name="used_email">Email already used</string>
+    <string name="incorrect_email_password">Incorrect email or Password</string>
+    <string name="login_success">Login successful</string>
+    <string name="login_failed">Login failed</string>
 </resources>
