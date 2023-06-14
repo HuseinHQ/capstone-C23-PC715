@@ -9,7 +9,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,6 +28,7 @@ import com.example.lapakkita_android.data.local.entity.StoreEntity
 fun BookmarkCard(
     item: StoreEntity,
     onClick: () -> Unit,
+    deleteBookmark: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -75,7 +75,7 @@ fun BookmarkCard(
                             .height(18.dp)
                     )
                     Text(
-                        text = item.rating.toString(),
+                        text = item.avgRating.toString(),
                         fontSize = 14.sp,
                         fontFamily = FontFamily(Font(R.font.inter_medium)),
                     )
@@ -94,7 +94,7 @@ fun BookmarkCard(
                 contentAlignment = Alignment.Center
             ){
                 IconButton(
-                    onClick = { }
+                    onClick = { deleteBookmark() }
                 ) {
                     Icon(
                         imageVector = Icons.Default.Close,

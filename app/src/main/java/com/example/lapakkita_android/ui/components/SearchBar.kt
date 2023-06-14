@@ -1,50 +1,44 @@
 package com.example.lapakkita_android.ui.components
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.KeyEventType
-import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.input.key.type
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.lapakkita_android.R
-import com.example.lapakkita_android.data.local.entity.HistoryEntity
+import com.example.lapakkita_android.data.local.Result
+import com.example.lapakkita_android.ui.viewmodel.ExploreViewModel
 
 @Composable
 fun SearchBar(
     isOpened: (Boolean) -> Unit,
     showDialog: () -> Unit,
-    listItem: List<HistoryEntity>,
-    onDeleteClick: () -> Unit,
+    onSearch: (String) -> Unit,
+    viewModel: ExploreViewModel,
     modifier: Modifier = Modifier,
 ){
     var text by remember { mutableStateOf(TextFieldValue()) }
@@ -72,6 +66,9 @@ fun SearchBar(
                     IconButton(onClick = {
                         opened = false
                         isOpened(false)
+                        if(text.text == "") {
+                            onSearch("")
+                        }
                     }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
@@ -143,21 +140,36 @@ fun SearchBar(
                 onSearch = {
                     opened = false
                     isOpened(false)
+                    onSearch(text.text)
+                    viewModel.addHistory(text.text)
                 }
             ),
             singleLine = true,
         )
         if(opened) {
-            HistoryList(
-                listItem = listItem,
-                onItemClick = { text =
-                    TextFieldValue(
-                        text = it,
-                        selection = TextRange(it.length)
+            viewModel.getHistoryList()
+            viewModel.uiStateHistory.collectAsState(initial = Result.Loading).value.let { state ->
+                if (state is Result.Success) {
+                    HistoryList(
+                        listItem = state.data,
+                        onItemClick = {
+                            text = TextFieldValue(
+                                text = it,
+                                selection = TextRange(it.length)
+                            )
+                            opened = false
+                            onSearch(it)
+                            isOpened(false)
+                            viewModel.addHistory(it)
+                        },
+                        onDeleteClick = {
+                            viewModel.deleteHistory(it)
+                            opened = true
+                            viewModel.getHistoryList()
+                        }
                     )
-                },
-                onDeleteClick = { onDeleteClick() }
-            )
+                }
+            }
         }
     }
 }

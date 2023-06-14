@@ -73,4 +73,7 @@
     <string name="incorrect_email_password">Incorrect email or Password</string>
     <string name="login_success">Login successful</string>
     <string name="login_failed">Login failed</string>
+    <string name="count_rating">(%d users)</string>
+    <string name="no_data">No data</string>
+    <string name="not_found">Not found</string>
 </resources>

@@ -5,6 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.DetailActivity">
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connection_error"
+        android:textAlignment="center"
+        style="@style/TextContent.Subtitle"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,13 +36,14 @@
                 android:id="@id/detail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Warung Makan Meohai"
+                tools:text="Warung Makan Meohai"
                 style="@style/TextContent.SubHeader"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_image"
                 android:layout_margin="16dp"/>
             <ImageView
                 android:id="@+id/icon_rating"
+                android:visibility="gone"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="@string/rating"
@@ -47,7 +60,7 @@
                 app:layout_constraintStart_toEndOf="@id/icon_rating"
                 app:layout_constraintTop_toTopOf="@id/icon_rating"
                 android:layout_marginStart="4dp"
-                android:text="Rating" />
+                tools:text="Rating" />
             <TextView
                 android:id="@+id/detail_count_rating"
                 style="@style/TextContent.SubHeader2"
@@ -57,7 +70,7 @@
                 app:layout_constraintTop_toTopOf="@id/icon_rating"
                 app:layout_constraintBottom_toBottomOf="@id/icon_rating"
                 android:layout_marginStart="4dp"
-                android:text="(4 users)" />
+                tools:text="(4 users)" />
             <androidx.compose.ui.platform.ComposeView
                 android:id="@+id/icon_detail"
                 android:layout_width="wrap_content"
@@ -75,7 +88,7 @@
                 app:layout_constraintTop_toBottomOf="@id/detail_rating"
                 android:paddingHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/lorem_ipsum" />
+                tools:text="@string/lorem_ipsum" />
             <androidx.compose.ui.platform.ComposeView
                 android:id="@+id/review_bar"
                 android:layout_width="match_parent"
@@ -98,4 +111,13 @@
         android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

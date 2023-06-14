@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -18,6 +19,11 @@ android {
         buildConfigField "String", "API_MAP", '"AIzaSyD1oaGAud50j29nePen5urpB-ES3wvwS5A"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions{
+            annotationProcessorOptions{
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -60,6 +66,7 @@ dependencies {
     implementation "androidx.compose.ui:ui:1.5.0-alpha04"
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
+    implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
     debugImplementation "androidx.compose.ui:ui-tooling:1.4.3"
     implementation "androidx.compose.ui:ui-tooling:1.4.3"
     implementation "androidx.compose.ui:ui-tooling-preview:1.4.3"
@@ -72,6 +79,11 @@ dependencies {
     implementation "io.coil-kt:coil-compose:2.4.0"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.firebaseui:firebase-ui-database:8.0.0'
+    implementation "androidx.room:room-runtime:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
+    implementation "androidx.room:room-ktx:2.5.1"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

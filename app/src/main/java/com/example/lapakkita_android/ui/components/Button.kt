@@ -69,7 +69,7 @@ fun ButtonSecondary(
         Text(
             text = text,
             fontSize = 14.sp,
-            fontFamily = FontFamily(Font(R.font.inter_medium)),
+            fontFamily = FontFamily(Font(R.font.inter_bold)),
             letterSpacing = 0.em,
             modifier = Modifier.padding(vertical = 8.dp)
         )

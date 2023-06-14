@@ -60,4 +60,8 @@ class ReviewActivity : AppCompatActivity() {
             ListReview(listItem = fakeData)
         }
     }
+
+    companion object{
+        const val REVIEW_STORE_ID = "review_store_id"
+    }
 }

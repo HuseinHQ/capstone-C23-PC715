@@ -39,8 +39,8 @@ fun CategoryCard(
         ),
         modifier = modifier
             .padding(8.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(50)
     ) {
         Text(
             text = item,

@@ -39,7 +39,7 @@ import com.example.lapakkita_android.data.local.CategoryList
 @Composable
 fun FilterSearch(
     hideDialog: () -> Unit,
-    buttonClicked: (String) -> Unit,
+    buttonClicked: (String, String) -> Unit,
     modifier: Modifier = Modifier,
 ){
     var text by remember { mutableStateOf(TextFieldValue()) }
@@ -69,6 +69,10 @@ fun FilterSearch(
         IconButton(onClick = {
             opened = false
             hideDialog()
+            selectedCategory = ""
+            text = TextFieldValue(
+                text = ""
+            )
             },
             modifier = Modifier
                 .align(Alignment.TopEnd)
@@ -186,7 +190,11 @@ fun FilterSearch(
         }
         ButtonContainer(
             onClicked = {
-                buttonClicked(selectedCategory)
+                buttonClicked(selectedCategory, text.text)
+                text = TextFieldValue(
+                    text = ""
+                )
+                selectedCategory = ""
             },
             text = stringResource(R.string.search_store),
             modifier = Modifier

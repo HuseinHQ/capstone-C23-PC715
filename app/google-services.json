@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "937218799930",
+    "firebase_url": "https://lapakkita-7928f-default-rtdb.firebaseio.com",
     "project_id": "lapakkita-7928f",
     "storage_bucket": "lapakkita-7928f.appspot.com"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "937218799930-7cpe7vait0ripsjuuv395itlnhm6esuj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lapakkita_android",
+            "certificate_hash": "ff735bd4c9c9196304e5dfc9ff1d492a490301c5"
+          }
+        },
+        {
+          "client_id": "937218799930-h09vadeunq062be1jh0cobkg1e8qhgl0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lapakkita_android",
+            "certificate_hash": "b1a0afdc4268c012ebe6c3d8989d8702d874da30"
+          }
+        },
         {
           "client_id": "937218799930-uevmq9ppmqka6jgtp8vp7hjvqc515tds.apps.googleusercontent.com",
           "client_type": 3

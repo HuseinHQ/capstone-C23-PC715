@@ -8,15 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
-import com.example.lapakkita_android.R
-import com.example.lapakkita_android.data.local.entity.StoreEntity
+import androidx.lifecycle.ViewModelProvider
 import com.example.lapakkita_android.databinding.FragmentProfileBinding
+import com.example.lapakkita_android.di.Injection
 import com.example.lapakkita_android.ui.activity.DetailActivity
 import com.example.lapakkita_android.ui.activity.EditProfilePhotoActivity
 import com.example.lapakkita_android.ui.activity.OnboardActivity
-import com.example.lapakkita_android.ui.components.BookmarkList
+import com.example.lapakkita_android.ui.components.BookmarkScreen
 import com.example.lapakkita_android.ui.components.ProfileCard
 import com.example.lapakkita_android.ui.components.ProfileTopBar
+import com.example.lapakkita_android.ui.viewmodel.BookmarkViewModel
+import com.example.lapakkita_android.ui.viewmodel.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -24,40 +26,7 @@ import com.google.firebase.ktx.Firebase
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var auth: FirebaseAuth
-    private val fakeData = mutableListOf(
-        StoreEntity(
-            id = 1,
-            name = "LatteCoffee",
-            photoUrl = "https://i.pravatar.cc/300",
-            rating = 3.5,
-            lat = -3.9822934,
-            lon = 122.5153179,
-        ),
-        StoreEntity(
-            id = 1,
-            name = "LatteCoffee",
-            photoUrl = "https://i.pravatar.cc/300",
-            rating = 3.5,
-            lat = -3.9822934,
-            lon = 122.5153179,
-        ),
-        StoreEntity(
-            id = 1,
-            name = "LatteCoffee",
-            photoUrl = "https://i.pravatar.cc/300",
-            rating = 3.5,
-            lat = -3.9822934,
-            lon = 122.5153179,
-        ),
-        StoreEntity(
-            id = 1,
-            name = "LatteCoffee",
-            photoUrl = "https://i.pravatar.cc/300",
-            rating = 3.5,
-            lat = -3.9822934,
-            lon = 122.5153179,
-        ),
-    )
+    private lateinit var bookmarkViewModel: BookmarkViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -66,6 +35,23 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(layoutInflater)
         setupComponent()
 
+        val injection = Injection.provideStoreRepository(requireContext())
+        bookmarkViewModel = ViewModelProvider(this, ViewModelFactory(injection))[BookmarkViewModel::class.java]
+        binding.bookmarkList.setContent {
+            BookmarkScreen(
+                viewModel = bookmarkViewModel,
+                onClick = {
+                    startActivity(
+                        Intent(
+                            requireContext(),
+                            DetailActivity::class.java
+                        ).putExtra(
+                            DetailActivity.STORE_ID, it
+                        )
+                    )
+                },
+            )
+        }
         return binding.root
     }
 
@@ -91,19 +77,6 @@ class ProfileFragment : Fragment() {
                             EditProfilePhotoActivity::class.java
                         ),
                         ActivityOptionsCompat.makeSceneTransitionAnimation(requireContext() as Activity).toBundle()
-                    )
-                }
-            )
-        }
-        binding.bookmarkList.setContent {
-            BookmarkList(
-                listItem = fakeData,
-                onClick = {
-                    startActivity(
-                        Intent(
-                            requireContext(),
-                            DetailActivity::class.java
-                        )
                     )
                 }
             )

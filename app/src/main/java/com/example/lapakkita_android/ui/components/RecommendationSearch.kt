@@ -57,6 +57,7 @@ fun RecommendationSearch(
         IconButton(
             onClick = {
                 hideDialog()
+                selectedCategory = ""
             },
             modifier = Modifier
                 .align(Alignment.TopEnd)

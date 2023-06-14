@@ -1,5 +1,6 @@
 package com.example.lapakkita_android.ui.components
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -28,11 +29,13 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.lapakkita_android.data.local.entity.StoreEntity
 import com.example.lapakkita_android.R
+import com.example.lapakkita_android.utils.getLocationFromLatLng
 
 @Composable
 fun GridListStore(
     modifier: Modifier = Modifier,
     listItem: List<StoreEntity>,
+    context: Context,
     toDetail: (Int) -> Unit,
 ){
     val gridState = rememberLazyGridState()
@@ -49,7 +52,8 @@ fun GridListStore(
         ) { data ->
             StoreCard(
                 item = data,
-                toDetail = toDetail
+                toDetail = toDetail,
+                context = context
             )
         }
     }
@@ -59,8 +63,11 @@ fun GridListStore(
 fun StoreCard(
     item: StoreEntity,
     toDetail: (Int) -> Unit,
+    context: Context,
     modifier: Modifier = Modifier
 ){
+
+    val location = getLocationFromLatLng(item.lat, item.lon, context)
     Card(
         modifier = modifier
             .height(232.dp)
@@ -126,9 +133,9 @@ fun StoreCard(
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
-                    text = item.location,
+                    text = location,
                     fontFamily = FontFamily(Font(R.font.inter_regular)),
-                    fontSize = 14.sp,
+                    fontSize = 12.sp,
                 )
             }
         }

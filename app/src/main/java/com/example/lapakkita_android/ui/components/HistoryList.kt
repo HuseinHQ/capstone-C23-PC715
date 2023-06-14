@@ -27,7 +27,7 @@ import com.example.lapakkita_android.data.local.entity.HistoryEntity
 fun HistoryList(
     listItem: List<HistoryEntity>,
     onItemClick: (String) -> Unit,
-    onDeleteClick: () -> Unit,
+    onDeleteClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ){
     LazyColumn(
@@ -40,9 +40,13 @@ fun HistoryList(
 //            key = { it.id }
         ) { data ->
             HistoryCard(
-                item = data.search,
-                onItemClick = { onItemClick(data.search) },
-                onDeleteClick = { onDeleteClick() }
+                item = data,
+                onItemClick = {
+                    onItemClick(it)
+                },
+                onDeleteClick = {
+                    onDeleteClick(it)
+                }
             )
         }
     }
@@ -50,16 +54,16 @@ fun HistoryList(
 
 @Composable
 fun HistoryCard(
-    item: String,
-    onItemClick: () -> Unit,
-    onDeleteClick: () -> Unit,
+    item: HistoryEntity,
+    onItemClick: (String) -> Unit,
+    onDeleteClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ){
     Box(
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colors.surface)
-            .clickable { onItemClick()  }
+            .clickable { onItemClick(item.search)  }
     ) {
        Row(
            modifier = Modifier
@@ -72,7 +76,7 @@ fun HistoryCard(
                contentDescription = null
            )
            Text(
-               text = item,
+               text = item.search,
                fontFamily = FontFamily(Font(R.font.inter_medium)),
                fontSize = 14.sp,
                modifier = Modifier
@@ -80,7 +84,7 @@ fun HistoryCard(
                    .padding(start = 20.dp)
            )
            IconButton(
-               onClick = {  }
+               onClick = { onDeleteClick(item.id) }
            ) {
                Icon(
                    imageVector = Icons.Default.Close,

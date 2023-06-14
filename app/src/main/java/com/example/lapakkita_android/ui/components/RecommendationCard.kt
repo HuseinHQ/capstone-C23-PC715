@@ -1,5 +1,8 @@
 package com.example.lapakkita_android.ui.components
 
+import android.content.Context
+import android.location.Geocoder
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,16 +22,38 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.lapakkita_android.R
 import com.example.lapakkita_android.data.local.entity.StoreEntity
+import java.io.IOException
+import java.util.*
 
 @Composable
-fun StoreCard(
+fun RecommendationCard(
+    context: Context,
     item: StoreEntity,
-    onClick: () -> Unit,
+    onClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var location = ""
+    val geocoder = Geocoder(context, Locale.getDefault())
+    try {
+        val list = geocoder.getFromLocation(
+            item.lat,
+            item.lon,
+            1)
+        if (list != null && list.size != 0) {
+            location = list[0].subLocality + ", " + list[0].locality
+        }
+    } catch (e: IOException) {
+        e.printStackTrace()
+        Toast.makeText(
+            context,
+            context.resources.getString(R.string.connection_error),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
     Card(
         modifier = modifier
-            .clickable { onClick() },
+            .clickable { onClick(item.id) },
         shape = RoundedCornerShape(10.dp)
     ){
         Row(
@@ -69,13 +94,13 @@ fun StoreCard(
                             .height(18.dp)
                     )
                     Text(
-                        text = item.rating.toString(),
+                        text = item.avgRating.toString(),
                         fontSize = 14.sp,
                         fontFamily = FontFamily(Font(R.font.inter_medium)),
                     )
                 }
                 Text(
-                    text = item.location,
+                    text = location,
                     fontFamily = FontFamily(Font(R.font.inter_medium)),
                     fontSize = 14.sp,
                     modifier = modifier

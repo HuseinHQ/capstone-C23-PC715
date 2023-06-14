@@ -47,6 +47,7 @@ fun ButtonContainer(
             ButtonPrimary(
                 onClicked = {onClicked()},
                 text = text,
+                modifier = Modifier.padding(horizontal = 8.dp)
             )
         }
     }
