@@ -16,6 +16,9 @@ class ViewModelFactory(
         else if (modelClass.isAssignableFrom(BookmarkViewModel::class.java)) {
             return BookmarkViewModel(storeRepository) as T
         }
+        else if (modelClass.isAssignableFrom(MapViewModel::class.java)) {
+            return MapViewModel(storeRepository) as T
+        }
         else if (modelClass.isAssignableFrom(RecommendationViewModel::class.java)) {
             return RecommendationViewModel(storeRepository) as T
         }

@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.lapakkita_android.data.local.entity.StoreEntity
 import com.example.lapakkita_android.data.local.dao.StoreDao
 import com.example.lapakkita_android.data.remote.response.AllStoreResponseItem
+import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -167,6 +168,7 @@ class StoreRepository private constructor(
             }
         }
     }
+
     companion object {
         @Volatile
         private var instance: StoreRepository? = null

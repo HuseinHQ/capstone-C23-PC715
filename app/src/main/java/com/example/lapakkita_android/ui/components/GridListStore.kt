@@ -50,7 +50,7 @@ fun GridListStore(
             listItem,
 //            key = { it.id }
         ) { data ->
-            StoreCard(
+            RecommendationCard(
                 item = data,
                 toDetail = toDetail,
                 context = context
@@ -60,7 +60,7 @@ fun GridListStore(
 }
 
 @Composable
-fun StoreCard(
+fun RecommendationCard(
     item: StoreEntity,
     toDetail: (Int) -> Unit,
     context: Context,
