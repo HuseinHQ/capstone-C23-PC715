@@ -59,7 +59,7 @@ def getdata(category):
     mydb = mysql.connector.connect(
         host="34.101.230.69",
         user="root",
-        password="CapstoneBisaYuk@123",
+        password="CapstoneBisaYuk123",
         database="my_database"
     )
 
