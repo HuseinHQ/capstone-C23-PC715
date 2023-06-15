@@ -24,7 +24,7 @@ Figma Link https://www.figma.com/file/kH2obeOXXMjh47YP0OOlPt/UI-Design-LapakKita
 ![Screenshot 2023-06-12 123328](https://github.com/HuseinHQ/capstone-C23-PC715/assets/77067538/01281b85-58d1-497b-9aa5-bbbaa9ac9ec4)
 Figma Link https://www.figma.com/file/kH2obeOXXMjh47YP0OOlPt/UI-Design-LapakKita?type=design&node-id=1%3A628&t=PXymflXdNgICktQP-1
 
-## Mockup
+## Prototype
 Figma Link https://www.figma.com/proto/kH2obeOXXMjh47YP0OOlPt/UI-Design-LapakKita?type=design&node-id=1-678&scaling=scale-down&page-id=1%3A628&starting-point-node-id=1%3A678&show-proto-sidebar=1
 
 ## References
