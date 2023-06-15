@@ -16,7 +16,7 @@ import com.example.lapakkita_android.data.local.entity.HistoryEntity
 //        AutoMigration(from = 1, to = 2),
 //        AutoMigration(from = 2, to = 3),
 //    ],
-    exportSchema = true)
+    exportSchema = false)
 abstract class LapakKitaDatabase : RoomDatabase() {
     abstract fun storeDao(): StoreDao
     abstract fun historyDao(): HistoryDao

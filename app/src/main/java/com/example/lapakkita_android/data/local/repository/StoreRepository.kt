@@ -129,6 +129,16 @@ class StoreRepository private constructor(
         }
     }
 
+    suspend fun searchStoreById(id: Int) : Flow<StoreEntity>{
+        val storeList = storeDao.getStore()
+        lateinit var selectedStore: StoreEntity
+        storeList.forEach {
+            if(it.id == id)
+                selectedStore = it
+        }
+        return flowOf(selectedStore)
+    }
+
     suspend fun searchStoreByCategoryAndName(name: String, category: String): Flow<List<StoreEntity>> {
         val storeList = storeDao.getStore()
         return if(category.isEmpty()){

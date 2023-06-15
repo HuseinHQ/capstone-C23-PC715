@@ -53,7 +53,7 @@
     <string name="remove_bookmark">Remove from bookmark</string>
     <string name="removed_bookmark">Removed from bookmark</string>
     <string name="share_content">
-        Find nearby store with LapakKita\n %s\n
+        Find nearby store with LapakKita\n%s\n
         https://www.google.com/maps/search/?api=1&amp;query=%f,%f
     </string>
     <string name="share_via">Share via…</string>

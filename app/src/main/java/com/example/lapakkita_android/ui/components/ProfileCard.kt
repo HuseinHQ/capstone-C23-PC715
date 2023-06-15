@@ -25,9 +25,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.lapakkita_android.R
+import com.google.firebase.auth.FirebaseUser
 
 @Composable
 fun ProfileCard(
+    user: FirebaseUser,
     editPhotoClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -43,7 +45,7 @@ fun ProfileCard(
             contentAlignment = Alignment.TopCenter
         ){
             AsyncImage(
-                model = "https://i.pravatar.cc/300",
+                model = user.photoUrl,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 placeholder = painterResource(R.drawable.placeholder_image),
@@ -71,14 +73,14 @@ fun ProfileCard(
             }
         }
         Text(
-            text = "John Doe",
+            text = user.displayName ?: "",
             fontSize = 18.sp,
             fontFamily = FontFamily(Font(R.font.inter_bold)),
             modifier = Modifier
                 .padding(top = 8.dp)
         )
         Text(
-            text = "johndoe@email.com",
+            text = user.email ?: "",
             fontSize = 14.sp,
             fontFamily = FontFamily(Font(R.font.inter_medium)),
             modifier = Modifier

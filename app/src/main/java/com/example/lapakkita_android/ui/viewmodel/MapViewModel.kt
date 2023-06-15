@@ -21,6 +21,9 @@ class MapViewModel(
     private val _uiState = MutableStateFlow<Result<List<StoreEntity>>>(Result.Loading)
     val uiState: StateFlow<Result<List<StoreEntity>>> = _uiState.asStateFlow()
 
+    private val _uiStateMarker = MutableStateFlow<Result<StoreEntity>>(Result.Loading)
+    val uiStateMarker: StateFlow<Result<StoreEntity>> = _uiStateMarker.asStateFlow()
+
     fun getAllMarker(){
         viewModelScope.launch {
             _uiState.value = Result.Loading
@@ -41,6 +44,16 @@ class MapViewModel(
     }
 
     fun onClickMarker(id: Int){
-
+        viewModelScope.launch {
+            _uiStateMarker.value = Result.Loading
+            storeRepository
+                .searchStoreById(id)
+                .catch {
+                _uiStateMarker.value = Result.Error("Error")
+                }
+                .collect{
+                    _uiStateMarker.value = Result.Success(it)
+                }
+        }
     }
 }

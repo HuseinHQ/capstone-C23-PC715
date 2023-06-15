@@ -64,7 +64,7 @@
                 app:layout_constraintTop_toTopOf="@id/btn_close"
                 app:layout_constraintBottom_toBottomOf="@id/btn_close"
                 app:layout_constraintStart_toEndOf="@id/detail_image"
-                android:text="Lapak Name"
+                tools:text="Lapak Name"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:textStyle="bold"
@@ -87,8 +87,9 @@
                 app:layout_constraintStart_toEndOf="@id/icon_rating"
                 app:layout_constraintTop_toBottomOf="@id/detail_name"
                 android:layout_marginStart="8dp"
-                android:text="Rating" />
+                tools:text="Rating" />
             <TextView
+                android:id="@+id/detail_location"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/detail_name"
@@ -101,7 +102,15 @@
                 android:textStyle="normal"
                 android:maxLines="5"
                 android:ellipsize="end"
-                android:text="@tools:sample/lorem/random"/>
+                tools:text="@tools:sample/lorem/random"/>
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

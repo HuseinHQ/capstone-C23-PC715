@@ -57,6 +57,7 @@ class ProfileFragment : Fragment() {
 
     private fun setupComponent() {
         auth = Firebase.auth
+        val user = auth.currentUser
         binding.profileTopBar.setContent{
             ProfileTopBar(
                 onClick = {
@@ -69,17 +70,20 @@ class ProfileFragment : Fragment() {
             )
         }
         binding.profileCard.setContent {
-            ProfileCard(
-                editPhotoClick = {
-                    startActivity(
-                        Intent(
-                            requireContext(),
-                            EditProfilePhotoActivity::class.java
-                        ),
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(requireContext() as Activity).toBundle()
-                    )
-                }
-            )
+            if (user != null) {
+                ProfileCard(
+                    user = user,
+                    editPhotoClick = {
+                        startActivity(
+                            Intent(
+                                requireContext(),
+                                EditProfilePhotoActivity::class.java
+                            ),
+                            ActivityOptionsCompat.makeSceneTransitionAnimation(requireContext() as Activity).toBundle()
+                        )
+                    }
+                )
+            }
         }
     }
 }
