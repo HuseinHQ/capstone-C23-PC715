@@ -1,4 +1,4 @@
-![Screenshot 2023-06-12 123328](https://github.com/HuseinHQ/capstone-C23-PC715/assets/77067538/518f574e-1638-4cef-b82e-47908208c8ec)# LapakKita - Mobile Development
+# LapakKita - Mobile Development
 ### Bangkit 2023 Capstone Project
 #### C23-PC715
 
