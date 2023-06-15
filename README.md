@@ -16,12 +16,12 @@ LapakKita is a digital platform to help people find their needs based on the wil
 
 ## Wireframe
 
-![Screenshot 2023-06-12 120737](https://github.com/HuseinHQ/capstone-C23-PC715/assets/77067538/02935969-ee1f-48c1-83b2-e68706d0d969)
+![Screenshot 2023-06-12 120737](https://github.com/HuseinHQ/capstone-C23-PC715/assets/77067538/02935969-ee1f-48c1-83b2-e68706d0d969)<br>
 Figma Link https://www.figma.com/file/kH2obeOXXMjh47YP0OOlPt/UI-Design-LapakKita?type=design&node-id=0%3A1&t=PXymflXdNgICktQP-1
 
 ## Mockup
 
-![Screenshot 2023-06-12 123328](https://github.com/HuseinHQ/capstone-C23-PC715/assets/77067538/01281b85-58d1-497b-9aa5-bbbaa9ac9ec4)
+![Screenshot 2023-06-12 123328](https://github.com/HuseinHQ/capstone-C23-PC715/assets/77067538/01281b85-58d1-497b-9aa5-bbbaa9ac9ec4)<br>
 Figma Link https://www.figma.com/file/kH2obeOXXMjh47YP0OOlPt/UI-Design-LapakKita?type=design&node-id=1%3A628&t=PXymflXdNgICktQP-1
 
 ## Prototype
