@@ -1,0 +1,20 @@
+runtime: python39
+entrypoint: gunicorn -w 4 -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker user:app
+
+env_variables:
+  SECRET_KEY: "secretmenu"
+  SQLALCHEMY_DATABASE_URI: "mysql+pymysql://root:CapstoneBisaYuk123@34.101.230.69/my_database"
+  GOOGLE_APPLICATION_CREDENTIALS: "[PATH_TO_SERVICE_ACCOUNT_JSON]"
+
+handlers:
+  - url: /api/registrasi
+    script: auto
+
+  - url: /api/signin
+    script: auto
+
+  - url: /api/upload-profile
+    script: auto
+
+  - url: /.*
+    script: auto
