@@ -4,11 +4,12 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 from werkzeug.wrappers import Response
+from google.cloud import storage
+
 
 import re
 import jwt
 import datetime
-import os
 import pymysql.cursors
 
 app = Flask(__name__)
@@ -128,12 +129,14 @@ class UploadProfilePicture(Resource):
         photo = request.files['foto_profil']
 
         # Simpan file foto
+        # di isi sesuai bucket gcp coy
         if photo and photo.filename != '':
-            # Tentukan folder tempat foto harus disimpan
-            upload_folder = os.path.abspath('uploads')
-            os.makedirs(upload_folder, exist_ok=True)
-            filename = os.path.join(upload_folder, photo.filename)
-            photo.save(filename)
+            client = storage.Client()
+            bucket_name = '[YOUR_BUCKET_NAME]'
+            bucket = client.get_bucket(bucket_name)
+            blob = bucket.blob(photo.filename)
+            blob.upload_from_string(photo.read(), content_type=photo.content_type)
+            filename = f'gs://{bucket_name}/{blob.name}'
 
             # Dapatkan user ID dari token
             user_id = get_user_id_from_token()
