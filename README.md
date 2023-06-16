@@ -6,13 +6,12 @@
 LapakKita is a digital platform to help people find their needs based on the willingness of MSMEs around them, and on the other hand, our application will make it easier for people who have MSMEs to more easily find the target market to address, so that the market can increase. supply to MSMEs in Indonesia after social restrictions due to the Covid-19 Pandemic so that MSMEs as one of the keys to economic growth can really boost the Indonesian Economy.
 
 ## Features
-### TBA
+1. Map: Showing nearby stall with Google Maps API
+2. Recommendation: Showing store with best rating and nearby from user
+
 
 ## Tools
-### TBA
-
-## User Flow
-### TBA
+Android Studio, Electric Eel version
 
 ## Wireframe
 
@@ -28,7 +27,9 @@ Figma Link https://www.figma.com/file/kH2obeOXXMjh47YP0OOlPt/UI-Design-LapakKita
 Figma Link https://www.figma.com/proto/kH2obeOXXMjh47YP0OOlPt/UI-Design-LapakKita?type=design&node-id=1-678&scaling=scale-down&page-id=1%3A628&starting-point-node-id=1%3A678&show-proto-sidebar=1
 
 ## References
-### TBA
+* [Kotlin](kotlinlang.org): Why Kotlin. Modern, concise and safe programming language. Concise; Safe; Interoperable.
+* [Jectpack Compose](https://developer.android.com/jetpack/compose): Build better apps faster with Jetpack Compose.
+* [Room](https://developer.android.com/training/data-storage/room):  Save data in a local database using Room.
 
 <br>
 C23-PC715 - Mobile Development
