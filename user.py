@@ -132,7 +132,8 @@ class UploadProfilePicture(Resource):
         # di isi sesuai bucket gcp coy
         if photo and photo.filename != '':
             client = storage.Client()
-            bucket_name = '[YOUR_BUCKET_NAME]'
+            bucket_name = 'lapak-image-storage'
+            folder_name = 'profile_img'
             bucket = client.get_bucket(bucket_name)
             blob = bucket.blob(photo.filename)
             blob.upload_from_string(photo.read(), content_type=photo.content_type)
